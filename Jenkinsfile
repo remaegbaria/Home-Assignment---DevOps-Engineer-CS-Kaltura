@@ -13,7 +13,9 @@ pipeline {
     //             image 'maven:3.8.1-adoptopenjdk-11'
     //             args '-v $HOME/.m2:/root/.m2'
     // }
-
+    agent {
+        docker { image 'httpd:latest' }
+    }
     stages {
         stage('Build') {
             steps {
@@ -30,10 +32,13 @@ pipeline {
          sh '''
             #!/bin/bash
             echo "hello world"
-            sudo docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
-            sudo docker ps
+            httpd --version
          '''
             //  script {
+            //                 sudo apt update
+            // sudo apt install docker.io
+            // sudo docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+            // sudo docker ps
                 
             //     }
                 // sh "echo ${currentTime}"

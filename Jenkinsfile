@@ -3,7 +3,7 @@ pipeline {
     parameters {
     string(name: 'Name', defaultValue: '', description: 'What is your name?')
     string(name: 'firstPort', defaultValue: '', description: 'What is the first port?')
-    text(name: 'secondPort', defaultValue: '', description: 'What is the second port?')
+    string(name: 'secondPort', defaultValue: '', description: 'What is the second port?')
   }
 
     stages {

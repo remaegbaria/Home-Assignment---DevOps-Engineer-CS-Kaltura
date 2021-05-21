@@ -3,7 +3,7 @@ pipeline {
     parameters {
     string(name: 'Name', defaultValue: '', description: 'What is your name?')
     string(name: 'firstPort', defaultValue: '', description: 'What is the first port?')
-    string(name: 'secondPort', defaultValue: '', description: 'What is the second port?')
+    text(name: 'secondPort', defaultValue: '', description: 'What is the second port?')
   }
 
     stages {
@@ -20,8 +20,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deploying....${params.Name}"
-                echo "Deploying....${params.firstPort}"
-                echo "Deploying....${params.secondPort}"
+                echo "two....${params.firstPort}"
+                echo "three....${params.secondPort}"
             }
         }
     }

@@ -27,10 +27,14 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-             script {
-                currentTime = java.time.LocalDate.now()
-                }
-                sh "echo ${currentTime}"
+         sh '''
+            #!/bin/bash
+            echo "hello world"
+         '''
+            //  script {
+                
+            //     }
+                // sh "echo ${currentTime}"
                 echo "Deploying....${params.Name}"
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"

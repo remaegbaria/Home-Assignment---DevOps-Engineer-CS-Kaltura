@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+    string(name: 'Name', defaultValue: '', description: 'What is your name?')
+  }
 
     stages {
         stage('Build') {
@@ -14,7 +17,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo "Deploying....${Name}"
             }
         }
     }

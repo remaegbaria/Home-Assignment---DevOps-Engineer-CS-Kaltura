@@ -1,4 +1,5 @@
 def currentTime
+def now = new Date()
 pipeline {
     agent any
     parameters {
@@ -33,6 +34,7 @@ pipeline {
                 echo "Deploying....${params.Name}"
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"
+                echo "current time is ${now}"
             }
         }
     }

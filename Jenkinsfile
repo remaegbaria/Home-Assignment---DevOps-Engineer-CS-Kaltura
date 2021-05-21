@@ -14,7 +14,7 @@ pipeline {
     //             args '-v $HOME/.m2:/root/.m2'
     // }
     agent {
-        docker { image 'httpd:latest' }
+        docker { image 'httpd:httpd:2.4' }
     }
     stages {
         stage('Build') {

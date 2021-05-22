@@ -20,9 +20,9 @@ pipeline {
                 echo 'Hello,apache'
                 sh 'httpd --version'
             }
-            steps {
-                echo 'Building..'
-            }
+            // steps {
+            //     echo 'Building..'
+            // }
         }
         stage('Test') {
     

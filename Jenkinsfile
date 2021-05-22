@@ -36,14 +36,14 @@ pipeline {
         // '''
         //   }
             steps {
-                sh 'docker build -t my-apache2 .'
-                sh 'docker run -dit --name my-running-app -p 80:80 my-apache2'
-        //  sh '''
-        //     #!/bin/bash
-        //     echo "hello world"
-        //     docker run -u -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+                // sh 'docker build -t my-apache2 .'
+                // sh 'docker run -dit --name my-running-app -p 80:80 my-apache2'
+         sh '''
+            #!/bin/bash
+            echo "hello world"
+            docker ps
            
-        //  '''
+          '''
             //  script {
             //                 sudo apt update
             // sudo apt install docker.io
@@ -52,6 +52,7 @@ pipeline {
              // httpd --version
                 
             //     }
+            // run -u -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
               
                 echo "Deploying....${params.Name}"
                 echo "two....${params.firstPort}"

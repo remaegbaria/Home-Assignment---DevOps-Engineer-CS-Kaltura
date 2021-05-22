@@ -4,7 +4,7 @@ pipeline {
     //  agent any
        agent {
         docker { image 'httpd:httpd:2.4' }
-        // docker.image('httpd:httpd:2.4').inside {
+        // docker.image('maven:3.3.3-jdk-8').inside {
         // git '…your-sources…'
         // sh 'mvn -B clean install'
         // }
@@ -14,6 +14,11 @@ pipeline {
     string(name: 'firstPort', defaultValue: '', description: 'What is the first port?')
     text(name: 'secondPort', defaultValue: '', description: 'What is the second port?')
   }
+ 
+    tools {
+       docker "docker" 
+    }
+
 
     stages {
         stage('Build') {

@@ -1,13 +1,8 @@
-def currentTime
+
 def now = new Date()
 pipeline {
-    //  agent any
        agent {
         docker { image 'httpd:2.4' }
-        // docker.image('maven:3.3.3-jdk-8').inside {
-        // git '…your-sources…'
-        // sh 'mvn -B clean install'
-        // }
     }
     parameters {
     string(name: 'Name', defaultValue: '', description: 'What is your name?')
@@ -28,7 +23,21 @@ pipeline {
             }
         }
         stage('Deploy') {
+               // docker.image('maven:3.3.3-jdk-8').inside {
+        // git '…your-sources…'
+        // sh 'mvn -B clean install'
+        // }
+        //    sh 'docker build -t my-apache2 .'
+            // docker.image('httpd:2.4').inside ("-p 9222:9222 --security-opt seccomp=$WORKSPACE/chrome.json") { 
+        // sh label: 
+        // 'Running npm test', 
+        // script: '''
+        // npm run test
+        // '''
+          }
             steps {
+                sh 'docker build -t my-apache2 .'
+                sh 'docker run -dit --name my-running-app -p 80:80 my-apache2'
         //  sh '''
         //     #!/bin/bash
         //     echo "hello world"
@@ -43,7 +52,7 @@ pipeline {
              // httpd --version
                 
             //     }
-                // sh "echo ${currentTime}"
+              
                 echo "Deploying....${params.Name}"
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"

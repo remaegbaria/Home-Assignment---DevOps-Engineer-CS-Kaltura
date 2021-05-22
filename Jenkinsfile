@@ -42,12 +42,7 @@ pipeline {
             #!/bin/bash
             echo "hello world"
           '''
-            node {
-            git '…' // checks out Dockerfile & Makefile
-            def myAp = docker.build 'my-apache2'
-            myAp.inside {
-                sh 'echo "hello"'
-            }
+
             }
             //  script {
             //                 sudo apt update
@@ -58,7 +53,12 @@ pipeline {
                 
             //     }
             // run -u -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
-              
+           node {
+            git '…' // checks out Dockerfile & Makefile
+            def myAp = docker.build 'my-apache2'
+            myAp.inside {
+                sh 'echo "hello"'
+            }
                 echo "Deploying....${params.Name}"
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"

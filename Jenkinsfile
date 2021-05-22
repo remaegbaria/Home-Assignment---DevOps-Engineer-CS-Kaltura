@@ -1,10 +1,10 @@
 def currentTime
 def now = new Date()
 pipeline {
-     agent any
-    //    agent {
-    //     docker { image 'httpd:httpd:2.4' }
-    // }
+    //  agent any
+       agent {
+        docker { image 'httpd:httpd:2.4' }
+    }
     parameters {
     string(name: 'Name', defaultValue: '', description: 'What is your name?')
     string(name: 'firstPort', defaultValue: '', description: 'What is the first port?')

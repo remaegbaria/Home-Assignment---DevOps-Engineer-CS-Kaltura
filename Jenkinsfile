@@ -1,6 +1,9 @@
 def currentTime
 def now = new Date()
 pipeline {
+    agent{
+        any
+    }
 //        agent {
 //         docker { image 'httpd:httpd:2.4' }
 //     }

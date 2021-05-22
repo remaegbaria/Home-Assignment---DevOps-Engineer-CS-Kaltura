@@ -1,9 +1,9 @@
 def currentTime
 def now = new Date()
 pipeline {
-       agent {
-        docker { image 'httpd:httpd:2.4' }
-    }
+//        agent {
+//         docker { image 'httpd:httpd:2.4' }
+//     }
     parameters {
     string(name: 'Name', defaultValue: '', description: 'What is your name?')
     string(name: 'firstPort', defaultValue: '', description: 'What is the first port?')
@@ -25,16 +25,16 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-            }https://github.com/remaegbaria/Home-Assignment---DevOps-Engineer-CS-Kaltura/blob/main/Jenkinsfile
+            }
         }
         stage('Deploy') {
             steps {
-         sh '''
-            #!/bin/bash
-            echo "hello world"
-            docker run -u -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+//          sh '''
+//             #!/bin/bash
+//             echo "hello world"
+//             docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
            
-         '''
+//          '''
             //  script {
             //                 sudo apt update
             // sudo apt install docker.io

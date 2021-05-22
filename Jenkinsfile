@@ -13,17 +13,17 @@ pipeline {
 
     stages {
 
-           agent { docker 'httpd:2.4' } 
-            steps {
-                echo 'Hello,apache'
-                sh 'httpd --version'
-            }
         stage('Build') {
             steps {
                 echo 'Building..'
             }
         }
         stage('Test') {
+                  agent { docker 'httpd:2.4' } 
+            steps {
+                echo 'Hello,apache'
+                sh 'httpd --version'
+            }
             steps {
                 echo 'Testing..'
             }
@@ -60,7 +60,7 @@ pipeline {
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"
                 echo "current time is ${now}"
-            }}
+            }
 
             }
             //  script {

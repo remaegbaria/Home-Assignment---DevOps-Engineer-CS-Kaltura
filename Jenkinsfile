@@ -14,10 +14,6 @@ pipeline {
     string(name: 'firstPort', defaultValue: '', description: 'What is the first port?')
     text(name: 'secondPort', defaultValue: '', description: 'What is the second port?')
   }
- 
-    tools {
-       dockerTool "docker" 
-    }
 
 
     stages {

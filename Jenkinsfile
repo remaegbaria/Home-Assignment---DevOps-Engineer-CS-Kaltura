@@ -41,9 +41,14 @@ pipeline {
          sh '''
             #!/bin/bash
             echo "hello world"
-            docker ps
-           
           '''
+            node {
+            git '…' // checks out Dockerfile & Makefile
+            def myAp = docker.build 'my-apache2'
+            myAp.inside {
+                sh 'echo "hello"'
+            }
+            }
             //  script {
             //                 sudo apt update
             // sudo apt install docker.io

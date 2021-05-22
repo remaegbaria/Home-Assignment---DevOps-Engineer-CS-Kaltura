@@ -3,7 +3,7 @@ def now = new Date()
 pipeline {
     //  agent any
        agent {
-        docker { image 'httpd:httpd:2.4' }
+        docker { image 'httpd:2.4' }
         // docker.image('maven:3.3.3-jdk-8').inside {
         // git '…your-sources…'
         // sh 'mvn -B clean install'

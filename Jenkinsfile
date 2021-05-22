@@ -3,11 +3,11 @@ def now = new Date()
 pipeline {
     //  agent any
        agent {
-        // docker { image 'httpd:httpd:2.4' }
-        docker.image('httpd:httpd:2.4').inside {
+        docker { image 'httpd:httpd:2.4' }
+        // docker.image('httpd:httpd:2.4').inside {
         // git '…your-sources…'
         // sh 'mvn -B clean install'
-        }
+        // }
     }
     parameters {
     string(name: 'Name', defaultValue: '', description: 'What is your name?')

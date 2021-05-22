@@ -25,7 +25,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-            }
+            }https://github.com/remaegbaria/Home-Assignment---DevOps-Engineer-CS-Kaltura/blob/main/Jenkinsfile
         }
         stage('Deploy') {
             steps {

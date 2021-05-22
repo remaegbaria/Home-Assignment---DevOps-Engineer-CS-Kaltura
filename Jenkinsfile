@@ -1,22 +1,16 @@
 def currentTime
 def now = new Date()
 pipeline {
-    agent any
-//        agent {
-//         docker { image 'httpd:httpd:2.4' }
-//     }
+     agent any
+    //    agent {
+    //     docker { image 'httpd:httpd:2.4' }
+    // }
     parameters {
     string(name: 'Name', defaultValue: '', description: 'What is your name?')
     string(name: 'firstPort', defaultValue: '', description: 'What is the first port?')
     text(name: 'secondPort', defaultValue: '', description: 'What is the second port?')
   }
 
-    //  agent {
-    //     docker {
-    //             image 'maven:3.8.1-adoptopenjdk-11'
-    //             args '-v $HOME/.m2:/root/.m2'
-    // }
- 
     stages {
         stage('Build') {
             steps {
@@ -30,12 +24,12 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-//          sh '''
-//             #!/bin/bash
-//             echo "hello world"
-//             docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+        //  sh '''
+        //     #!/bin/bash
+        //     echo "hello world"
+        //     docker run -u -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
            
-//          '''
+        //  '''
             //  script {
             //                 sudo apt update
             // sudo apt install docker.io

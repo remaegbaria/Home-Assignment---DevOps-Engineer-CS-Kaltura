@@ -3,6 +3,7 @@ def now = new Date()
 pipeline {
        agent {
         docker { image 'httpd:2.4' }
+        label "node"
     }
     parameters {
     string(name: 'Name', defaultValue: '', description: 'What is your name?')

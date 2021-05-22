@@ -43,7 +43,8 @@ pipeline {
                 ]
                 ]
 
-                slackSend(channel: "#devops-engineer", attachments: attachments)
+                 slackSend channel: '#devops-engineer', color: 'good', message: "build...."
+                // slackSend channel: '#devops-engineer', color: 'good', message: "build....", teamDomain: 'homeassignmen-fob5197.slack.com', tokenCredentialId: 'Nizs79B93Ku8txI0TqQlLC7l'
                 }
 
             }

@@ -16,7 +16,7 @@ pipeline {
   }
  
     tools {
-       docker "docker" 
+       Docker "docker" 
     }
 
 

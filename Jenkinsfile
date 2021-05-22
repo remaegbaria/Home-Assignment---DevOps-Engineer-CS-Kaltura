@@ -1,7 +1,9 @@
 def currentTime
 def now = new Date()
 pipeline {
-    agent any
+       agent {
+        docker { image 'httpd:httpd:2.4' }
+    }
     parameters {
     string(name: 'Name', defaultValue: '', description: 'What is your name?')
     string(name: 'firstPort', defaultValue: '', description: 'What is the first port?')
@@ -13,9 +15,7 @@ pipeline {
     //             image 'maven:3.8.1-adoptopenjdk-11'
     //             args '-v $HOME/.m2:/root/.m2'
     // }
-//     agent {
-//         docker { image 'httpd:httpd:2.4' }
-//     }
+ 
     stages {
         stage('Build') {
             steps {
@@ -28,12 +28,6 @@ pipeline {
             }
         }
         stage('Deploy') {
-                        agent {
-                 docker { image 'httpd:httpd:2.4' }
-            }
-            steps {
-                sh 'docker --version'
-            }
             steps {
          sh '''
             #!/bin/bash

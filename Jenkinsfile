@@ -1,6 +1,7 @@
 
 def now = new Date()
 pipeline {
+    agent any
     //    agent {
     //     docker { image 'httpd:2.4' }
     // }
@@ -13,12 +14,12 @@ pipeline {
 
     stages {
 
-              agent { docker 'httpd:2.4' } 
+        stage('Build') {
+            agent { docker 'httpd:2.4' } 
             steps {
                 echo 'Hello,apache'
                 sh 'httpd --version'
             }
-        stage('Build') {
             steps {
                 echo 'Building..'
             }

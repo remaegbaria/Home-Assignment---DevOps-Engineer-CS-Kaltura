@@ -1,10 +1,9 @@
 
 def now = new Date()
 pipeline {
-       agent {
-        docker { image 'httpd:2.4' }
-        label "node"
-    }
+    //    agent {
+    //     docker { image 'httpd:2.4' }
+    // }
     parameters {
     string(name: 'Name', defaultValue: '', description: 'What is your name?')
     string(name: 'firstPort', defaultValue: '', description: 'What is the first port?')
@@ -13,6 +12,12 @@ pipeline {
 
 
     stages {
+
+           agent { docker 'httpd:2.4' } 
+            steps {
+                echo 'Hello,apache'
+                sh 'httpd --version'
+            }
         stage('Build') {
             steps {
                 echo 'Building..'
@@ -44,13 +49,13 @@ pipeline {
             echo "hello world"
           '''
 
-                     node {
-            script   {          
-            git '…' // checks out Dockerfile & Makefile
-            def myAp = docker.build 'my-apache2'
-            myAp.inside {
-                sh 'echo "hello"'
-            }
+            //          node {
+            // script   {          
+            // git '…' // checks out Dockerfile & Makefile
+            // def myAp = docker.build 'my-apache2'
+            // myAp.inside {
+            //     sh 'echo "hello"'
+            // }
                 echo "Deploying....${params.Name}"
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"

@@ -54,6 +54,17 @@ pipeline {
                     script {
                         slackSend channel: '#devops-engineer', color: '#ed3424', message: 'Failure in the build process...'}
                 }
+                always {
+                    // publish html
+                    publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'coverage',
+                    reportFiles: 'index.html',
+                    reportName: 'RCov Report'
+            ]
+                }
             }
         }
     }

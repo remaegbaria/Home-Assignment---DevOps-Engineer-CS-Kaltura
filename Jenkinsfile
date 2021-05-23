@@ -2,7 +2,6 @@
 def now = new Date()
 pipeline {
     agent any
-        docker { image 'httpd:2.4' }
 
     //params
     parameters {
@@ -17,13 +16,13 @@ pipeline {
     stages {
         stage('Deploy HTML page') {
             steps {
+                 docker { image 'httpd:2.4' }
                 //build httpd image with the Dockerfile
                 sh 'docker build -t my-apache2 .'
                 //run httpd image with the first port
                 sh "docker run -dit --name my-running-app -p ${params.firstPort}:80 my-apache2"
                 //run httpd image with the second port
                 sh "docker run -dit --name my-running-app2 -p ${params.secondPort}:80 my-apache2"
-
             }
 
             post {

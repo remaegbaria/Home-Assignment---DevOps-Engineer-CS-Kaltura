@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html>
+<style media="screen">
+  div{
+    width:50%
+    heigh:40%
+    border:8px black;
+  }
+</style>
 <body>
-<script>
+<div>
+<script type="text/javascript">
   def date= build.getEnvVars()["now"];
+  def datetst= jenkinsfile.getEnvVars()["now"];
 </script>
+<h1>
+  <script type="text/javascript">
+    date
+  </script></h1>
+  <h1>
+    <script type="text/javascript">
+      datetst
+    </script></h1>
 <h1>hello</h1>
 <h1>${date}</h1>
-
+<h1>${datetst}</h1>
+</div>
 </body>
 </html>

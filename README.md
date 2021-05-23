@@ -19,7 +19,7 @@ then select build and you can view outputs by selecting Console output
 
 ## View the html file
 
-open the browser and enter URL that contain your instance Public IPv4 address and one of the ports inputs in this way:
+open the browser and enter URL that contain your instance Public IPv4 address or localhost in case that you work in local computer then add one of the ports inputs in this way:
 
 ```bash
 Public IPv4 address:port

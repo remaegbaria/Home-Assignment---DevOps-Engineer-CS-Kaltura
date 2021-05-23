@@ -43,12 +43,24 @@ pipeline {
                 ]
                 ]
 
-                 slackSend channel: '#devops-engineer', color: 'good', message: "build...."
+                //  slackSend channel: '#devops-engineer', color: 'good', message: "build...."
                 // slackSend channel: '#devops-engineer', color: 'good', message: "build....", teamDomain: 'homeassignmen-fob5197.slack.com', tokenCredentialId: 'Nizs79B93Ku8txI0TqQlLC7l'
                 }
 
             }
 
+        }
+        post{
+                success{
+                script{
+                     slackSend channel: '#devops-engineer', color: 'good', message: "The process was built successfully..."
+                }
+                }
+               failure{
+               script{
+                     slackSend channel: '#devops-engineer', color: 'red', message: "Failure in the build process..."
+               }
+            }
         }
     }
 }

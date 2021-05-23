@@ -48,9 +48,7 @@ pipeline {
                 }
 
             }
-
-        }
-        post{
+                  post{
                 success{
                 script{
                      slackSend channel: '#devops-engineer', color: 'good', message: "The process was built successfully..."
@@ -62,5 +60,8 @@ pipeline {
                }
             }
         }
+
+        }
+
     }
 }

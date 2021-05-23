@@ -26,6 +26,11 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                script{
+                           docker.image('httpd:2.4').withRun('-dit --name my-running-app -p 8080:80 my-apache2') 
+                           
+                        
+                }
             sh '''
                 #!/bin/bash
                 echo "hello world"

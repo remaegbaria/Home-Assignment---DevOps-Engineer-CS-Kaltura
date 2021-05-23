@@ -29,19 +29,21 @@ pipeline {
             sh '''
                 #!/bin/bash
                 echo "hello world"
+                docker build -t my-apache2 .
+                docker run -dit --name my-running-app -p 8080:80 my-apache2
             '''
                 echo "Deploying....${params.Name}"
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"
                 echo "current time is ${now}"
                 script{
-                def attachments = [
-                [
-                    text: 'build mood!',
-                    // fallback: 'Hey, Vader seems to be mad at you.',
-                    color: '#ff0000'
-                ]
-                ]
+                // def attachments = [
+                // [
+                //     text: 'build mood!',
+                //     // fallback: 'Hey, Vader seems to be mad at you.',
+                //     color: '#ff0000'
+                // ]
+                // ]
 
                 //  slackSend channel: '#devops-engineer', color: 'good', message: "build...."
                 // slackSend channel: '#devops-engineer', color: 'good', message: "build....", teamDomain: 'homeassignmen-fob5197.slack.com', tokenCredentialId: 'Nizs79B93Ku8txI0TqQlLC7l'

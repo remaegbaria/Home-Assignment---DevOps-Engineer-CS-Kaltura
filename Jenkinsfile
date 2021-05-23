@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     env.Parameter = params.Name
-                    echo "your name is ${name}"
+                    echo "your name is ${env.Parameter}"
                     echo "your name is ${now}"
                 }
             }

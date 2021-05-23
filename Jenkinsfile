@@ -38,7 +38,7 @@ pipeline {
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"
                 echo "current time is ${now}"
-                'docker build -t my-apache2 .'
+                sh 'docker build -t my-apache2 .'
                 // script{
                 // // def attachments = [
                 // // [

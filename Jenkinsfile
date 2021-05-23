@@ -14,10 +14,13 @@ pipeline {
     }
 
     stages {
-        stage('Deploy HTML page') {
+        stage('pull image') {
             agent {
                 docker { image 'httpd:2.4' }
             }
+        }
+        stage('Deploy HTML page') {
+            agent any
             steps {
                 //build httpd image with the Dockerfile
                 sh 'docker build -t my-apache2 .'

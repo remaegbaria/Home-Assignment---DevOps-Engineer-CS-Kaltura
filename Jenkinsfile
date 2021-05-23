@@ -14,13 +14,21 @@ pipeline {
     }
 
     stages {
+        //print name and current data/time parameters
+        stage('print parameters') {
+            steps {
+                echo "your name is ${params.Name}"
+                echo "your name is ${now}"
+            }
+        }
+
         //pull httpd image from docker hub
         stage('pull image') {
             agent {
                 docker { image 'httpd:2.4' }
             }
             steps {
-                echo "pull image...."
+                echo 'pull image....'
             }
         }
         stage('Deploy HTML page') {
@@ -29,9 +37,9 @@ pipeline {
                 //build httpd image with the Dockerfile
                 sh 'docker build -t my-apache2 .'
                 //run httpd image with the first port
-                sh "docker run -dit --name my-running-app -p ${params.firstPort}:80 my-apache2"
+                sh "docker run -dit --name my-running-app-1 -p ${params.firstPort}:80 my-apache2"
                 //run httpd image with the second port
-                sh "docker run -dit --name my-running-app2 -p ${params.secondPort}:80 my-apache2"
+                sh "docker run -dit --name my-running-app-2 -p ${params.secondPort}:80 my-apache2"
             }
 
             post {

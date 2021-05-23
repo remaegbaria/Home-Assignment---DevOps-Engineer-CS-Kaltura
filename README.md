@@ -9,13 +9,13 @@ first in your Jenkins server install docker.
 ```bash
 sudo apt install docker.io
 ```
-open the Jenkins and create a new item with multibranch pipeline 
-and go to the Branch Sources and select GitHub then paste the repository URL to Repository HTTPS URL field and make sure that Build Configuration is by Jenkinsfile
+open the Jenkins to create a new item with multibranch pipeline 
+and go to the Branch Sources and select GitHub then paste the repository URL to Repository HTTPS URL field , make sure that Build Configuration is by Jenkinsfile
 
 ## To run
 
 go to build with parameters and insert the three parameters fields
-and then select build and you can view outputs by selecting Console output
+then select build and you can view outputs by selecting Console output
 
 ## View the html file
 

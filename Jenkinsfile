@@ -1,69 +1,48 @@
-
+//variable for the current date
 def now = new Date()
 pipeline {
-       agent {
+
+    agent {
         docker { image 'httpd:2.4' }
     }
+
+    //params
     parameters {
+    //get the name 
     string(name: 'Name', defaultValue: '', description: 'What is your name?')
-    string(name: 'firstPort', defaultValue: '', description: 'What is the first port?')
-    text(name: 'secondPort', defaultValue: '', description: 'What is the second port?')
+    //get the first port 
+    string(name: 'firstPort', defaultValue: '80', description: 'What is the first port?')
+    //get the second port 
+    text(name: 'secondPort', defaultValue: '80', description: 'What is the second port?')
   }
 
-
     stages {
-
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-    
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
+        stage('Deploy HTML page') {
         
             steps {
-           
-            sh '''
-                #!/bin/bash
-                echo "hello world"
-            '''
-            // sh('docker build -t my-apache2 .')
-            // sh('docker run -dit --name my-running-app -p 8080:80 my-apache2')
+            //build httpd image with the Dockerfile   
+            sh "docker build -t my-apache2 ."
+            //run httpd image with the first port 
+            sh "docker run -dit --name my-running-app -p ${params.firstPort}:80 my-apache2"
+            //run httpd image with the second port 
+            sh "docker run -dit --name my-running-app2 -p ${params.secondPort}:80 my-apache2"
+    
                 echo "Deploying....${params.Name}"
-                echo "two....${params.firstPort}"
-                echo "three....${params.secondPort}"
                 echo "current time is ${now}"
-                sh 'docker build -t my-apache2 .'
-                // script{
-                // // def attachments = [
-                // // [
-                // //     text: 'build mood!',
-                // //     // fallback: 'Hey, Vader seems to be mad at you.',
-                // //     color: '#ff0000'
-                // // ]
-                // // ]
-    //  sudo docker build -t my-apache2 .
-    //             sudo docker run -dit --name my-running-app -p 8080:80 my-apache2
-                // //  slackSend channel: '#devops-engineer', color: 'good', message: "build...."
-                // // slackSend channel: '#devops-engineer', color: 'good', message: "build....", teamDomain: 'homeassignmen-fob5197.slack.com', tokenCredentialId: 'Nizs79B93Ku8txI0TqQlLC7l'
-                // }
 
             }
-                  post{
+
+            post{
+                //in case of success : send a success message for the devops-engineer channel in slack
                 success{
-                script{
-                     slackSend channel: '#devops-engineer', color: '#217a36', message: "The process was built successfully..."
-                }
-                }
-               failure{
-               script{
-                     slackSend channel: '#devops-engineer', color: '#ed3424', message: "Failure in the build process..."
-                    }
+                  script{
+                     slackSend channel: '#devops-engineer', color: '#217a36', message: "The process was built successfully..."}
+                   }
+
+                //in case of failure : send a failure message for the devops-engineer channel in slack
+                failure{
+                  script{
+                     slackSend channel: '#devops-engineer', color: '#ed3424', message: "Failure in the build process..."}
                     }
                 }
 

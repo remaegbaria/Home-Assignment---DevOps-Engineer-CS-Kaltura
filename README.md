@@ -23,7 +23,7 @@ open the browser and enter URL that contain your instance Public IPv4 address or
 
 ```bash
 Public IPv4 address:port
-          or 
+or
 localhost:port
 ```
 

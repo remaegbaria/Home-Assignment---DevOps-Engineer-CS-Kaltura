@@ -18,6 +18,10 @@ pipeline {
             agent {
                 docker { image 'httpd:2.4' }
             }
+            steps {
+                echo "Deploying....${params.Name}"
+                echo "current time is ${now}"
+            }
         }
         stage('Deploy HTML page') {
             agent any
@@ -28,9 +32,6 @@ pipeline {
                 sh "docker run -dit --name my-running-app -p ${params.firstPort}:80 my-apache2"
                 //run httpd image with the second port
                 sh "docker run -dit --name my-running-app2 -p ${params.secondPort}:80 my-apache2"
-
-                echo "Deploying....${params.Name}"
-                echo "current time is ${now}"
             }
 
             post {

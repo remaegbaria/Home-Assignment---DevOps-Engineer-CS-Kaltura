@@ -1,29 +1,13 @@
 <!DOCTYPE html>
 <html>
-<style media="screen">
-  div{
-    width:50%
-    heigh:40%
-    border:8px black;
-  }
-</style>
 <body>
-<div>
-<script type="text/javascript">
-  def date= build.getEnvVars()["now"];
-  def datetst= jenkinsfile.getEnvVars()["now"];
+
+<h2>Your Name Is :</h2>
+<p>Current Date and Time is <span id='date'></span>.</p>
+<script>
+var d = new Date();
+document.getElementById("date").innerHTML = d;
 </script>
-<h1>
-  <script type="text/javascript">
-    date
-  </script></h1>
-  <h1>
-    <script type="text/javascript">
-      datetst
-    </script></h1>
-<h1>hello</h1>
-<h1>${date}</h1>
-<h1>${datetst}</h1>
-</div>
+
 </body>
 </html>

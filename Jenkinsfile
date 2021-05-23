@@ -14,13 +14,13 @@ pipeline {
     }
 
     stages {
+        //pull httpd image from docker hub
         stage('pull image') {
             agent {
                 docker { image 'httpd:2.4' }
             }
             steps {
-                echo "Deploying....${params.Name}"
-                echo "current time is ${now}"
+                echo "pull image...."
             }
         }
         stage('Deploy HTML page') {

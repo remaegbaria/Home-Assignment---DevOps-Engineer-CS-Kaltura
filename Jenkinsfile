@@ -25,10 +25,7 @@ pipeline {
             }
         }
         stage('Deploy') {
-                            docker.image('httpd:2.4').withRun('-dit --name my-running-app -p 8080:80 my-apache2') {
-
-                    
-                }
+        
             steps {
            
             sh '''
@@ -41,6 +38,7 @@ pipeline {
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"
                 echo "current time is ${now}"
+                'docker build -t my-apache2 .'
                 // script{
                 // // def attachments = [
                 // // [

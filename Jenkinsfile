@@ -17,8 +17,11 @@ pipeline {
         //print name and current data/time parameters
         stage('print parameters') {
             steps {
-                echo "your name is ${params.Name}"
-                echo "your name is ${now}"
+                script {
+                    env.Parameter = params.Name
+                    echo "your name is ${name}"
+                    echo "your name is ${now}"
+                }
             }
         }
 

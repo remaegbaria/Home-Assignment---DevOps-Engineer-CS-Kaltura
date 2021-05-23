@@ -25,7 +25,6 @@ pipeline {
             }
         }
         stage('Deploy') {
-            agent { label 'master' }
             steps {
             sh '''
                 #!/bin/bash

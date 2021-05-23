@@ -53,12 +53,12 @@ pipeline {
                   post{
                 success{
                 script{
-                     slackSend channel: '#devops-engineer', color: 'good', message: "The process was built successfully..."
+                     slackSend channel: '#devops-engineer', color: '#217a36', message: "The process was built successfully..."
                 }
                 }
                failure{
                script{
-                     slackSend channel: '#devops-engineer', color: 'red', message: "Failure in the build process..."
+                     slackSend channel: '#devops-engineer', color: '#ed3424', message: "Failure in the build process..."
                     }
                     }
                 }

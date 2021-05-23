@@ -36,18 +36,18 @@ pipeline {
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"
                 echo "current time is ${now}"
-                script{
-                // def attachments = [
-                // [
-                //     text: 'build mood!',
-                //     // fallback: 'Hey, Vader seems to be mad at you.',
-                //     color: '#ff0000'
-                // ]
-                // ]
+                // script{
+                // // def attachments = [
+                // // [
+                // //     text: 'build mood!',
+                // //     // fallback: 'Hey, Vader seems to be mad at you.',
+                // //     color: '#ff0000'
+                // // ]
+                // // ]
 
-                //  slackSend channel: '#devops-engineer', color: 'good', message: "build...."
-                // slackSend channel: '#devops-engineer', color: 'good', message: "build....", teamDomain: 'homeassignmen-fob5197.slack.com', tokenCredentialId: 'Nizs79B93Ku8txI0TqQlLC7l'
-                }
+                // //  slackSend channel: '#devops-engineer', color: 'good', message: "build...."
+                // // slackSend channel: '#devops-engineer', color: 'good', message: "build....", teamDomain: 'homeassignmen-fob5197.slack.com', tokenCredentialId: 'Nizs79B93Ku8txI0TqQlLC7l'
+                // }
 
             }
                   post{
@@ -59,9 +59,9 @@ pipeline {
                failure{
                script{
                      slackSend channel: '#devops-engineer', color: 'red', message: "Failure in the build process..."
-               }
-            }
-        }
+                    }
+                    }
+                }
 
         }
 

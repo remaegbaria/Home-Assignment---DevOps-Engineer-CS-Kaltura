@@ -29,8 +29,8 @@ pipeline {
             sh '''
                 #!/bin/bash
                 echo "hello world"
-                docker build -t my-apache2 .
-                docker run -dit --name my-running-app -p 8080:80 my-apache2
+                sudo docker build -t my-apache2 .
+                sudo docker run -dit --name my-running-app -p 8080:80 my-apache2
             '''
                 echo "Deploying....${params.Name}"
                 echo "two....${params.firstPort}"

@@ -29,9 +29,9 @@ pipeline {
             sh '''
                 #!/bin/bash
                 echo "hello world"
-                sudo docker build -t my-apache2 .
-                sudo docker run -dit --name my-running-app -p 8080:80 my-apache2
             '''
+            sh('docker build -t my-apache2 .')
+            sh('docker run -dit --name my-running-app -p 8080:80 my-apache2')
                 echo "Deploying....${params.Name}"
                 echo "two....${params.firstPort}"
                 echo "three....${params.secondPort}"
@@ -44,7 +44,8 @@ pipeline {
                 // //     color: '#ff0000'
                 // // ]
                 // // ]
-
+    //  sudo docker build -t my-apache2 .
+    //             sudo docker run -dit --name my-running-app -p 8080:80 my-apache2
                 // //  slackSend channel: '#devops-engineer', color: 'good', message: "build...."
                 // // slackSend channel: '#devops-engineer', color: 'good', message: "build....", teamDomain: 'homeassignmen-fob5197.slack.com', tokenCredentialId: 'Nizs79B93Ku8txI0TqQlLC7l'
                 // }

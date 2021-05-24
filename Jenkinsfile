@@ -23,11 +23,11 @@ pipeline {
 
         stage('Deploy HTML page') {
             steps {
-                sh 'pwd && cat index.html'
+                // sh 'pwd && cat index.html'
                 //build httpd image with the Dockerfile
                 sh 'docker build -t my-apache2 .'
                 //run httpd image with the the two ports
-                sh "docker run -dit --name my-running-app-1 -p ${params.firstPort}:80 -p ${params.secondPort}:80 my-apache2"
+                sh "docker run -dit --rm --name my-running-app-1 -p ${params.firstPort}:80 -p ${params.secondPort}:80 my-apache2"
             }
 
             post {

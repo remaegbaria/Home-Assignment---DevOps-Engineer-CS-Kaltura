@@ -32,15 +32,11 @@ pipeline {
             post {
                 //in case of success : send a success message for the devops-engineer channel in slack
                 success {
-                    // script {
                         slackSend channel: '#devops-engineer', color: '#217a36', message: 'The process was built successfully...'}
-                // }
 
                 //in case of failure : send a failure message for the devops-engineer channel in slack
                 failure {
-                    // script {
                         slackSend channel: '#devops-engineer', color: '#ed3424', message: 'Failure in the build process...'}
-                // }
             }
         }
     }

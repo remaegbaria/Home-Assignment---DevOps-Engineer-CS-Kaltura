@@ -1,5 +1,5 @@
 //variable for the current date
-def now = new Date()
+// def now = new Date()
 pipeline {
     agent any
 
@@ -14,13 +14,14 @@ pipeline {
     }
 
     stages {
-        //print name and current data/time parameters
-        stage('print parameters') {
+        //pass name parameter to html file (index.html)
+        stage('pass parameter') {
             steps {
                 script {
-                    env.Parameter = params.Name
-                    echo "your name is ${env.Parameter}"
-                    echo "your name is ${now}"
+                    echo "${params.Name}' >> index.html"
+                    // env.Parameter = params.Name
+                    // echo "your name is ${env.Parameter}"
+                    // echo "your name is ${now}"
                 }
             }
         }

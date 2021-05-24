@@ -1,6 +1,6 @@
 //variable for the current date
 // def now = new Date()
-def MY_NAME
+def MY_NAME 
 pipeline {
     agent any
 
@@ -19,7 +19,8 @@ pipeline {
         stage('pass parameter') {
             steps {
                 script {
-                    sh "MY_NAME='<h2>${params.Name}</h2>'"
+                    MY_NAME = "<h2>${params.Name}</h2>"
+                    // sh "MY_NAME='<h2>${params.Name}</h2>'"
                     echo "${MY_NAME} >> index.html"
                     sh 'cat index.html'
                 // env.Parameter = params.Name

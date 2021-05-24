@@ -18,34 +18,13 @@ pipeline {
         //pass name parameter to html file (index.html)
         stage('pass parameter') {
             steps {
-                script {
-                    // MY_NAME = "<h2>${params.Name}</h2>"
-                    // echo "'<h2>${params.Name}</h2>' > name.html"
-                    // sh 'cat name.html'
-                    // sh "MY_NAME='<h2>${params.Name}</h2>'"
-                    // cat "cat name.html >> index.html"
-                    // echo "${MY_NAME} >> index.html"
-                    // sh 'cat index.html'
-                    sh "sed -i 's/{NAME}/${params.Name}/' index.html"
-                // env.Parameter = params.Name
-                // echo "your name is ${env.Parameter}"
-                // echo "your name is ${now}"
-                }
+                    sh "sed -i 's/{NAME}/${params.Name}/' index.html && cat index.html"
             }
         }
 
-        //pull httpd image from docker hub
-        // stage('pull image') {
-        //     agent {
-        //         docker { image 'httpd:2.4' }
-        //     }
-        //     steps {
-        //         echo 'pull image....'
-        //     }
-        // }
         stage('Deploy HTML page') {
-            agent any
             steps {
+                sh 'pwd && cat index.html'
                 //build httpd image with the Dockerfile
                 sh 'docker build -t my-apache2 .'
                 //run httpd image with the first port

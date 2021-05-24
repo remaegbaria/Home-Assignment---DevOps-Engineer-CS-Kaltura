@@ -20,11 +20,11 @@ pipeline {
             steps {
                 script {
                     MY_NAME = "<h2>${params.Name}</h2>"
-                    echo "'<h2>${params.Name}</h2>' > name.html"
-                    sh 'cat name.html'
+                    // echo "'<h2>${params.Name}</h2>' > name.html"
+                    // sh 'cat name.html'
                     // sh "MY_NAME='<h2>${params.Name}</h2>'"
-                    cat "cat name.html >> index.html"
-                    // echo "${MY_NAME} >> index.html"
+                    // cat "cat name.html >> index.html"
+                    echo "${MY_NAME} >> index.html"
                     sh 'cat index.html'
                 // env.Parameter = params.Name
                 // echo "your name is ${env.Parameter}"

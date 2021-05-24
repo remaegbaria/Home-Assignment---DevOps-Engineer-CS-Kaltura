@@ -1,5 +1,6 @@
 //variable for the current date
 // def now = new Date()
+def MY_NAME
 pipeline {
     agent any
 

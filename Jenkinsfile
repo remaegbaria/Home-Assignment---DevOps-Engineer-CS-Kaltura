@@ -35,14 +35,14 @@ pipeline {
         }
 
         //pull httpd image from docker hub
-        stage('pull image') {
-            agent {
-                docker { image 'httpd:2.4' }
-            }
-            steps {
-                echo 'pull image....'
-            }
-        }
+//         stage('pull image') {
+//             agent {
+//                 docker { image 'httpd:2.4' }
+//             }
+//             steps {
+//                 echo 'pull image....'
+//             }
+//         }
         stage('Deploy HTML page') {
             agent any
             steps {

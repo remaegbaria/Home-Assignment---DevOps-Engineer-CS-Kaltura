@@ -2,13 +2,23 @@
 
 this code get a name and two ports from the user and run Apache HTTP Server image that serve on the two ports the index.html page that will contain the input name and the current date and time.
 
-## Installation
+## Required
+Jenkins server and there is some plugins to install in Jenkins
 
-first in your Jenkins server install docker.
+#### Install Docker
+
+first install docker in your Jenkins server.
 
 ```bash
 sudo apt install docker.io
 ```
+
+#### Install docker plugins in Jenkins
+![image](https://github.com/remaegbaria/Home-Assignment---DevOps-Engineer-CS-Kaltura/blob/main/screenshots/docker%20plugins.png)
+
+#### Install slack notifications plugin
+![image](https://github.com/remaegbaria/Home-Assignment---DevOps-Engineer-CS-Kaltura/blob/main/screenshots/slack%20plugin.png)
+
 open the Jenkins to create a new item with multibranch pipeline 
 and go to the Branch Sources and select GitHub then paste the repository URL to Repository HTTPS URL field , make sure that Build Configuration is by Jenkinsfile
 

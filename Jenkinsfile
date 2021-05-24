@@ -18,7 +18,7 @@ pipeline {
         stage('pass parameter') {
             steps {
                 script {
-                    echo "${params.Name}' >> index.html"
+                    echo "'<h2>${params.Name}</h2>' >> index.html"
                     // env.Parameter = params.Name
                     // echo "your name is ${env.Parameter}"
                     // echo "your name is ${now}"

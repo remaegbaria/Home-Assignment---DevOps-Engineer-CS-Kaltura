@@ -57,7 +57,7 @@ or
 localhost:port
 ```
 
-#### you must see this
+#### you should see this
 
 ![image](https://github.com/remaegbaria/Home-Assignment---DevOps-Engineer-CS-Kaltura/blob/main/screenshots/html%20page.png)
 

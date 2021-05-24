@@ -19,6 +19,7 @@ pipeline {
             steps {
                 script {
                     echo "'<h2>${params.Name}</h2>' >> index.html"
+                    echo "cat index.html"
                     // env.Parameter = params.Name
                     // echo "your name is ${env.Parameter}"
                     // echo "your name is ${now}"

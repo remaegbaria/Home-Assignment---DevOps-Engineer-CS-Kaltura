@@ -3,7 +3,7 @@
 this code get a name and two ports from the user and run Apache HTTP Server image that serve on the two ports the index.html page that will contain the input name and the current date and time.
 
 ## Required
-Jenkins server and there is some plugins to install in Jenkins
+Jenkins server and plugins to install in Jenkins
 
 #### Install Docker
 

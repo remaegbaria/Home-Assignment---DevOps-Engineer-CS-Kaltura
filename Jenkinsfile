@@ -1,5 +1,4 @@
-//variable for the current date
-// def now = new Date()
+
 def MY_NAME 
 pipeline {
     agent any
@@ -18,6 +17,7 @@ pipeline {
         //pass name parameter to html file (index.html)
         stage('pass parameter') {
             steps {
+                     //swap the name value in the html file to the value of the parameter
                     sh "sed -i 's/{NAME}/${params.Name}/' index.html && cat index.html"
             }
         }
@@ -27,10 +27,9 @@ pipeline {
                 sh 'pwd && cat index.html'
                 //build httpd image with the Dockerfile
                 sh 'docker build -t my-apache2 .'
-                //run httpd image with the first port
+                //run httpd image with the the two ports
                 sh "docker run -dit --name my-running-app-1 -p ${params.firstPort}:80 -p ${params.secondPort}:80 my-apache2"
-                //run httpd image with the second port
-                // sh "docker run -dit --name my-running-app-2 -p ${params.secondPort}:80 my-apache2"
+         
             }
 
             post {

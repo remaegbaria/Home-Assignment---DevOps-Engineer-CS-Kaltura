@@ -57,6 +57,9 @@ or
 localhost:port
 ```
 
+#### you must see this
+
+![image](https://github.com/remaegbaria/Home-Assignment---DevOps-Engineer-CS-Kaltura/blob/main/screenshots/html%20page.png)
 
 ## Receive status in slack
 

@@ -2,6 +2,12 @@
 pipeline {
     agent any
 
+    environment {
+        registry = 'remawail/home_assignment'
+        registryCredential = 'docker-hub-connection'
+        dockerImage = ''
+    }
+
     //params
     parameters {
         //get the name
@@ -24,9 +30,15 @@ pipeline {
         stage('Deploy HTML page') {
             steps {
                 //build httpd image with the Dockerfile
-                sh 'docker build -t my-apache2 .'
+                sh "docker build -t ${registry} ."
+
+                    withCredentials([usernamePassword(credentialsId: 'docker-hub-connection', usernameVariable: 'USERNAME',
+                         passwordVariable: 'PASSWORD')]) {
+                        sh "docker login -u $USERNAME -p $PASSWORD && docker push ${registry} "
+                         }
+
                 //run httpd image with the the two ports
-                sh "docker run -dit --name my-running-app-1 -p ${params.firstPort}:80 -p ${params.secondPort}:80 my-apache2"
+                sh "docker run -dit --name my-running-app-1 -p ${params.firstPort}:80 -p ${params.secondPort}:80 ${registry}"
             }
 
             post {

@@ -66,3 +66,13 @@ localhost:port
 after the build process is done a build status sent to the devops-engineer channel in my slack account
 
 ![image](https://github.com/remaegbaria/Home-Assignment---DevOps-Engineer-CS-Kaltura/blob/main/screenshots/print-screen-slack-notifications.png)
+
+## Push docker image to docker hub
+add a credential that contain docker hub username & password
+
+![image](https://github.com/remaegbaria/Home-Assignment---DevOps-Engineer-CS-Kaltura/blob/main/screenshots/credential-docker-hub.png)
+
+link to the docker hub repository(home_assignment)
+<a href="https://hub.docker.com/repository/docker/remawail/home_assignment" target="_blank">docker hub</a>
+
+![image](https://github.com/remaegbaria/Home-Assignment---DevOps-Engineer-CS-Kaltura/blob/main/screenshots/docker%20hub.png)

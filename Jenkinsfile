@@ -3,9 +3,10 @@ pipeline {
     agent any
 
     environment {
+        //my repository in docker hub
         registry = 'remawail/home_assignment'
+        //docker hub credential
         registryCredential = 'docker-hub-connection'
-        dockerImage = ''
     }
 
     //params
@@ -32,10 +33,11 @@ pipeline {
                 //build httpd image with the Dockerfile
                 sh "docker build -t ${registry} ."
 
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub-connection', usernameVariable: 'USERNAME',
+                //connect with docker hub by jenkins credentials and push the image to docker hub repository (home_assignment)
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-connection', usernameVariable: 'USERNAME',
                          passwordVariable: 'PASSWORD')]) {
-                        sh "docker login -u $USERNAME -p $PASSWORD && docker push ${registry} "
-                         }
+                    sh "docker login -u $USERNAME -p $PASSWORD && docker push ${registry} "
+                 }
 
                 //run httpd image with the the two ports
                 sh "docker run -dit --name my-running-app-1 -p ${params.firstPort}:80 -p ${params.secondPort}:80 ${registry}"
